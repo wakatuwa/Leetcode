@@ -8,15 +8,14 @@
 public class Solution {
     // you need to treat n as an unsigned value
     public int hammingWeight(int n) {
-		String string = Integer.toString(n);
-		char[] arr = string.toCharArray();
-		int count = 0;
-		for(int i = 0; i<arr.length; i++) {
-			if(arr[i] == '1'){
-				count++;
-			}
+		int ret = 0;
+		while(n!=0) {
+			//观察二进制的 n & n-1 ,运算结果恰为n的最低位1变为0
+			//利用这个性质，当n不等于0的时候，不停翻转，每翻转一次就令计数的ret加1
+			n &= n-1;
+			ret++;
 		}
-		return count;
+		return ret;
     }
 }
 // @lc code=end
